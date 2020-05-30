@@ -1,0 +1,30 @@
+<mat-toolbar class="docs-navbar-header">
+    <mat-toolbar-row >
+      <span mat-button routerLink="/" routerLinkActivate="active">Diario Iris</span>
+      <h4>El mejor lugar para conocer las últimas noticias</h4>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-divider></mat-divider>
+<mat-toolbar style="background: #9c27b0">
+    <mat-toolbar-row>
+        <div class="button-row espace">
+        <a mat-button routerLink="/" routerLinkActivate="active">Principal</a>
+        <a mat-button routerLink="politica" routerLinkActivate="active">Politica</a>
+        <a mat-button routerLink="economia" routerLinkActivate="active">Economia</a>
+        <a mat-button routerLink="entretenimiento" routerLinkActivate="active">Entretenimiento</a>
+        <a mat-button routerLink="cultura" routerLinkActivate="active">Cultura</a>
+        <a mat-button routerLink="salud" routerLinkActivate="active">Salud</a>
+        <a mat-button routerLink="deportes" routerLinkActivate="active">Deportes</a>
+    </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
+<!-- Footer -->
+<div class="navbar navbar-fixed-bottom" style="background: #9c27b0; margin-top: 10px;">
+    <span mat-button routerLink="/" routerLinkActivate="active" style="color: white;">Diario Iris</span>
+    <h5 style="color: white;">© 2020 Copyright:
+      <a href="#"> #SpaceInvaders</a>
+    </h5>
+</div>
