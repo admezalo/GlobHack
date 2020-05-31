@@ -9,10 +9,10 @@ import { CultureComponent } from './components/culture/culture.component';
 import { HealthComponent } from './components/health/health.component';
 
 
-const routes: Routes = [    
+const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'politica', component: PoliticsComponent },
-  { path: 'economia', component: EconomicsComponent },
+  { path: 'política', component: PoliticsComponent },
+  { path: 'economía', component: EconomicsComponent },
   { path: 'entretenimiento', component: EntertainmentComponent },
   { path: 'cultura', component: CultureComponent },
   { path: 'salud', component: HealthComponent },

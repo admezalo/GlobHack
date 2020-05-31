@@ -1,25 +1,37 @@
 .button-row {
-    display: table-cell;
+  display: table-cell;
 }
-  
+
 .button-row button {
-    display: table-cell;
-    margin-right: 8px;
+  display: table-cell;
+  margin-right: 8px;
 }
 
-.espace{
-    margin-left: 10%;
+.espace {
+  margin-left: 10%;
 }
 
-.content{
-    background: #212121;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 10px;
+.content {
+  background: #f8f3eb;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10px;
 }
 
-h4, h6{
-    margin-left: 5%;
+h4,
+h6 {
+  margin-left: 5%;
 }
 
+.docs-navbar-header {
+  background-color: #c3edea;
+  color: #424242;
+}
 
+.font-title {
+  font-family: 'Chelsea Market', cursive;
+}
+
+.name-newapapper {
+  font-family: 'Caudex', serif;
+}

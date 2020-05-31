@@ -10,19 +10,24 @@ import { News } from '../../models/news'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  news : Array<News> = new Array();;
-  one_news : News;
-  two_news : News;
+  news: Array<News> = new Array();;
+  one_news: News;
+  two_news: News;
 
-  
-  constructor(public dialog: MatDialog, private service:DataService) { 
-    this.service.getNews().subscribe(data => { 
-      this.one_news = data[0];  
-      this.two_news = data[4]; 
-      this.news = data; });
+
+  constructor(
+    public dialog: MatDialog,
+    private service: DataService
+  ) {
+
+    this.service.getNews().subscribe(data => {
+      this.one_news = data[0];
+      this.two_news = data[4];
+      this.news = data;
+    });
     this.one_news = new News();
     this.two_news = new News();
-    
+
   }
 
   openDialog() {
@@ -35,5 +40,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }
