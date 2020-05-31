@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
         .then(data => this.wordFlag = this.filterWordsIntoArray(data))
         .then(data => {
           this.recognitionService.createSpeak(`estas viendo ${this.wordFlag}`);
+          this.recognitionService.createSpeak('notica: reconocimiento de voz');
           var stringTest = 'El reconocimiento de voz implica recibir voz a través del micrófono de un dispositivo, luego es verificado por un servicio de reconocimiento de voz contra una lista de palabras o frases grammar. Cuando se reconoce con éxito una palabra o frase, esta se devuelve como una cadena de texto y así poder iniciar otras acciones.'.split(' ');
           stringTest.forEach(data => this.recognitionService.createSpeak(data));
         })
