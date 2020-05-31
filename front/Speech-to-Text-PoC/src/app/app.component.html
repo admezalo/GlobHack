@@ -3,6 +3,29 @@
 <p class="hints"></p>
 <div>
   <p class="output"><em>...diagnostic messages</em></p>
-  <h3>{{this.wordListening}}</h3>
+  <h3>{{this. wordListener}}</h3>
   <!-- <button class="" (click)='this.createSpeak()'>Escuchar</button> -->
+  <div>
+    <input type="text" [(ngModel)]='this.wordListener' [placeholder]='"ingrese audio"' autofocus>
+  </div>
+  <div>
+    <p>{{this.wordFlag}}</p>
+  </div>
+  <div [ngSwitch]='this.wordFlag'>
+    <div *ngSwitchCase='this.sectionNewsLetters[1]'>
+      <h4>{{this.LabelCase}}{{this.sectionNewsLetters[1]}}</h4>
+    </div>
+    <div *ngSwitchCase='this.sectionNewsLetters[2]'>
+      <h4>{{this.LabelCase}}{{this.sectionNewsLetters[2]}}</h4>
+    </div>
+    <div *ngSwitchCase='this.sectionNewsLetters[3]'>
+      <h4>{{this.LabelCase}}{{this.sectionNewsLetters[3]}}</h4>
+    </div>
+    <div *ngSwitchCase='this.sectionNewsLetters[4]'>
+      <h4>{{this.LabelCase}}{{this.sectionNewsLetters[4]}}</h4>
+    </div>
+    <div *ngSwitchDefault>
+      <h4>{{this.LabelCase}}{{this.sectionNewsLetters[0]}}</h4>
+    </div>
+  </div>
 </div>

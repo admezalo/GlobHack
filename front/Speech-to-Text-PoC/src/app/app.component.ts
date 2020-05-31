@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { getSpeechRecognition, getSpeechGrammarList, getSpeechRecognitionEvent, geSpeechSynthesis } from './testSpeech';
-
-const SpeechRecognition: any = getSpeechRecognition();
-const SpeechGrammarList: any = getSpeechGrammarList();
-const SpeechRecognitionEvent: any = getSpeechRecognitionEvent();
-const speechSynthesis: any = geSpeechSynthesis();
+import { RecognitionService } from './services/recognition.service';
 
 @Component({
   selector: 'app-root',
@@ -14,18 +8,21 @@ const speechSynthesis: any = geSpeechSynthesis();
 })
 export class AppComponent implements OnInit {
   title = 'testConcept';
-  public words: Array<string> = [];
-  public speechSynthesis = speechSynthesis;
-  public speechRecognitionList = new SpeechGrammarList();
-  public recognition = new SpeechRecognition();
-  public wordListening: any;
+  public recognition: any;
+  public wordListener: any;
+  public sectionNewsLetters: Array<string> = ['inici', 'deporte', 'política', 'cultura', 'economía'];
+  public wordFlag: string;
+  public LabelCase: string = 'estas viendo: ';
 
-  constructor() {
+  constructor(
+    private recognitionService: RecognitionService
+  ) {
+    this.recognition = this.recognitionService.getRecognitionInstance();
   }
 
 
   ngOnInit() {
-    this.words = ['deportes', 'actualidad', 'politica'];
+    /* this.words = ['deportes', 'actualidad', 'politica'];
     var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + this.words.join(' | ') + ' ;'
 
     this.speechRecognitionList.addFromString(grammar, 1);
@@ -45,17 +42,34 @@ export class AppComponent implements OnInit {
         
           console.log('Ready to receive a color command.');
         } */
-
     document.body.onclick = () => {
       this.recognition.start();
       this.createListener()
-        .then(res => { this.wordListening = res; return res })
-        .then(data => this.createSpeak(data))
+        .then(res => { this.wordListener = res; return res })
+        .then(data => this.wordFlag = this.filterWordsIntoArray(data))
+        .then(data => {
+          this.recognitionService.createSpeak(`estas viendo ${this.wordFlag}`);
+          var stringTest = 'El reconocimiento de voz implica recibir voz a través del micrófono de un dispositivo, luego es verificado por un servicio de reconocimiento de voz contra una lista de palabras o frases grammar. Cuando se reconoce con éxito una palabra o frase, esta se devuelve como una cadena de texto y así poder iniciar otras acciones.'.split(' ');
+          stringTest.forEach(data => this.recognitionService.createSpeak(data));
+        })
         .catch(res => console.log(res.message));
     }
 
 
 
+  }
+
+
+  /* searchWordCoincidences = () => {
+    var stringVar = (<string>this.wordListener).split(' ');
+    console.log(stringVar);
+  }
+ */
+  filterWordsIntoArray = (stringValue: any) => {
+    console.log(stringValue);
+    var testVar = this.sectionNewsLetters.find(data => new String(stringValue).includes(data));
+    console.log(testVar);
+    return testVar;
   }
 
   createListener() {
@@ -77,27 +91,13 @@ export class AppComponent implements OnInit {
           reject(error);
         }
         var color = event.results[0][0].transcript;
-
-        // callback(color);
         diagnostic.textContent = 'Result received: ' + color + '.';
         bg.style.backgroundColor = color;
-        // console.log(color);
         console.log('Confidence: ' + event.results[0][0].confidence);
         resolve(event.results[0][0].transcript);
       }
 
     });
-  }
-
-  createSpeak = (textToSpeach) => {
-    var speech = new SpeechSynthesisUtterance();
-
-    // Set the text and voice attributes.
-    speech.text = textToSpeach;
-    speech.volume = 1;
-    speech.rate = 1;
-    speech.pitch = 1;
-    this.speechSynthesis.speak(speech);
   }
 
   /* 
