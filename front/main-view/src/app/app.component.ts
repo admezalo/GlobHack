@@ -44,7 +44,11 @@ export class AppComponent implements OnInit {
     console.log(stringValue);
     var testVar = this.sectionNewsLetters.find(data => new String(stringValue).includes(data));
     console.log(testVar);
-    return testVar;
+    if (testVar) {
+      return testVar
+    } else {
+      return '/';
+    }
   }
 
   findDataApi = (inputStringVoice: any) => {

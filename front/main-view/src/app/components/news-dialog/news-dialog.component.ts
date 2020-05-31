@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { News } from '../../models/news';
 
+export interface DialogData {
+  news:News;
+}
 
 @Component({
   selector: 'app-news-dialog',
@@ -7,8 +12,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-dialog.component.css']
 })
 export class NewsDialogComponent implements OnInit {
+  @Input() myCurrentNews:News;
+  currentNew : News = new News();
   
-  constructor() { }
+  constructor(public dialogRef:MatDialogRef<NewsDialogComponent>, 
+              @Inject(MAT_DIALOG_DATA) public data: DialogData) { 
+    this.currentNew = data.news;
+  }
 
   ngOnInit(): void {
   }

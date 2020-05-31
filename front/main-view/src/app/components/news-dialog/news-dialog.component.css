@@ -1,0 +1,12 @@
+.main-card {
+    font-family: 'Chelsea Market', cursive;
+}
+  
+.title-card {
+    font-family: 'Caudex', serif;
+}
+
+.img-card{
+    width: auto;
+    border-radius: 7px;
+}

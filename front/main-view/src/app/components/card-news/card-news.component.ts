@@ -10,11 +10,14 @@ import { News } from '../../models/news'
 })
 export class CardNewsComponent implements OnInit {
   @Input() mySelectedNews:News;
- 
+  sendNews:News = new News();
+
   constructor(public dialog : MatDialog) { }
 
   openDialog() {
-    const dialogRef = this.dialog.open(NewsDialogComponent);
+    const dialogRef = this.dialog.open(NewsDialogComponent, {
+      data: {news:this.sendNews}
+    });
    
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -22,6 +25,7 @@ export class CardNewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sendNews = this.mySelectedNews;
   }
 
 }
