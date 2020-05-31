@@ -1,6 +1,6 @@
 export class News{
+    _id:string;
     title:string;
-    text:string;
-    image:string;
-    category:string;
+    description:string;
+    image:string;  
 }

@@ -1,53 +1,21 @@
 <div class="row">
     <div class="col-lg-8 col-sm-12 card-front" (click)="openDialog()">
-      <img class="header-image" src="{{noticia.image}}">
-      <span class="span2">{{noticia.title}}</span>
+      <img class="header-image" src="{{one_news.image}}">
+      <span class="span2">{{one_news.title}}</span>
     </div>
     <div class="col-lg-4 col-sm-12 card-front" style="background: #0062ff;" (click)="openDialog()">
-      <span class="span1">{{noticia2.title}}</span>
+      <span class="span1">{{two_news.title}}</span>
     </div>
 </div>
-<div class="row">
-  <div class="col-lg-4 col-sm-12 card-front">
-    <mat-card>
-      <img mat-card-image src="{{noticia3.image}}">
-      <mat-card-content>
-        <mat-card-title>{{noticia3.title}}</mat-card-title>
-        <p>
-          {{noticia3.text}}
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="col-lg-4 col-sm-12 card-front">
-    <mat-card>
-      <img mat-card-image src="{{noticia.image}}">
-      <mat-card-content>
-        <mat-card-title>{{noticia.title}}</mat-card-title>
-        <p>
-          {{noticia.text}}
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="col-lg-4 col-sm-12 card-front">
-    <mat-card>
-      <img mat-card-image src="{{noticia2.image}}">
-      <mat-card-content>
-        <mat-card-title>{{noticia2.title}}</mat-card-title>
-        <p>
-          {{noticia2.text}}
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<div *ngFor ="let new of news">
+    <app-card-news [mySelectedNews]="new"></app-card-news>
 </div>
 <div class="row">
     <div class="col-lg-4 col-sm-12 card-front" style="background: #d81b60 ;">
-      <span class="span1">The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well</span>
+      <span class="span1">{{one_news.title}}</span>
     </div>
     <div class="col-lg-8 col-sm-12 card-front" >
-      <img class="header-image" src="https://d3j6lal8h4ou1t.cloudfront.net/uploads/2017/09/Bogot%C3%A1-ciudad-123rf-400x200.jpg">
+      <img class="header-image" src="{{two_news.image}}">
+      <span class="span2">{{two_news.title}}</span>
     </div>
 </div>

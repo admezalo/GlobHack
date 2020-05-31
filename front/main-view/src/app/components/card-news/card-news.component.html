@@ -1,0 +1,17 @@
+<div class="card-front">
+    <mat-card>
+        <img mat-card-image src="{{ mySelectedNews.image }}">
+        <mat-card-content class="card-front-body">
+          <mat-card-title>{{ mySelectedNews.title }}</mat-card-title>
+          <p>
+            {{ mySelectedNews.description }}
+          </p>
+        </mat-card-content>
+        <mat-card-footer>
+          <button mat-button (click)="openDialog()">
+            <a>Ver más</a>
+          </button>  
+        </mat-card-footer>
+    </mat-card>
+</div>
+

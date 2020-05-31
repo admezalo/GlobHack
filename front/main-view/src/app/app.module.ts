@@ -19,6 +19,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NewsDialogComponent } from './components/news-dialog/news-dialog.component';
+import { CardNewsComponent } from './components/card-news/card-news.component';
+import { DataService } from './services/data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { NewsDialogComponent } from './components/news-dialog/news-dialog.compon
     EntertainmentComponent,
     CultureComponent,
     HealthComponent,
-    NewsDialogComponent
+    NewsDialogComponent,
+    CardNewsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +46,12 @@ import { NewsDialogComponent } from './components/news-dialog/news-dialog.compon
     MatButtonModule,
     MatGridListModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule, 
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
